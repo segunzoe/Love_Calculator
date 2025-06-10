@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffefef;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ff4081;
+    }
+
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ff4081;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #e73570;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .message {
+      font-size: 20px;
+      color: #ff4081;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Love Calculator ❤️</h1>
+  <form id="loveForm">
+    <input type="text" id="playerName" placeholder="Your Name" required />
+    <input type="text" id="partnerName" placeholder="Partner's Name" required />
+    <button type="submit">Calculate Love Score</button>
+  </form>
+  <div class="result" id="result"></div>
+
+  <script>
+    document.getElementById('loveForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get names
+      const player = document.getElementById('playerName').value;
+      const partner = document.getElementById('partnerName').value;
+
+      // Validate input
+      if (!player || !partner) {
+        alert("Please enter both names to calculate your love score.");
+        return;
+      }
+
+      // Calculate love score
+      const loveScore = Math.floor(Math.random() * 101); // 0 to 100
+
+      // Generate custom message
+      let message = "";
+
+      if (loveScore > 80) {
+        message = "You two are made for each other! ❤️";
+      } else if (loveScore > 50) {
+        message = "There's potential here. Keep the spark alive! 💖";
+      } else if (loveScore > 30) {
+        message = "It could work, but you may need to put in some effort. 💛";
+      } else {
+        message = "Love is unpredictable... maybe just friends? 💔";
+      }
+
+      // Show result
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p>Hello <strong>${player}</strong>, your love score with <strong>${partner}</strong> is <strong>${loveScore}%</strong>.</p><p class='message'>${message}</p>`;
+    });
+  </script>
+</body>
+</html>
